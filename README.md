@@ -138,3 +138,60 @@ SparkSession dengan nama aplikasi "metode2" kemudian dibuat menggunakan metode b
 </p>
 </div>
 
+## Mengonversi DataFrames ke RDDs
+<img src="img/metode_4.1.png"/>
+<div>
+<pre>
+<code>
+from pyspark import *
+from pyspark.sql import *
+from pyspark.sql.types import StructField, StringType, IntegerType, StructType
+spark = SparkSession.builder.appName("metode1").getOrCreate()
+sc = spark.sparkContext
+mylist = [(1, "Nama-NIM"),(3, "Big Data 2023")]
+myschema = ['col1', 'col2']
+df = spark.createDataFrame(mylist, myschema)
+df.rdd.collect()
+df2rdd = df.rdd
+df2rdd.take(2)
+</code>
+</pre>
+<p align="justify">
+SparkSession dengan nama aplikasi "metode1" dibuat menggunakan metode builder(). Sesi Spark dengan nama aplikasi tersebut akan digunakan jika sudah ada, dan jika tidak maka sesi baru akan dibuat. Kemudian, sebuah list dengan dua tuple dan sebuah schema dibuat. List tersebut diubah menjadi DataFrame dengan menggunakan metode createDataFrame() pada objek SparkSession dengan mengambil data dari list dan menyediakan skema berupa objek StructType. DataFrame kemudian diubah menjadi RDD dengan menggunakan metode rdd pada objek DataFrame. Hasilnya kemudian ditampilkan menggunakan metode collect(). Objek RDD tersebut kemudian diambil dua baris teratas menggunakan metode take().
+</p>
+</div>
+
+## Membuat Datasets 1
+<img src="img/metode_5.1.png"/>
+<div>
+<pre>
+<code>
+import org.apache.spark.sql.{Dataset, SparkSession}
+case class Dept(dept_id: Int, dept_name: String)
+val deptRDD = sc.makeRDD(Seq(Dept(1,"Sales"),Dept(2,"HR")))
+val deptDS = spark.createDataset(deptRDD)
+val deptDF = spark.createDataFrame(deptRDD)
+</code>
+</pre>
+<p align="justify">
+implementasi Apache Spark dengan menggunakan bahasa Scala. Pertama-tama, impor modul yang dibutuhkan yaitu Dataset dan SparkSession. Kemudian, sebuah case class Dept dibuat yang memiliki dua atribut yaitu dept_id bertipe integer dan dept_name bertipe string. Selanjutnya, RDD (Resilient Distributed Dataset) deptRDD dibuat dengan menggunakan metode makeRDD() pada objek SparkContext dengan mem-passingkan sekumpulan data berupa instance dari case class Dept. Objek deptDS dan deptDF kemudian dibuat dengan menggunakan metode createDataset() dan createDataFrame() pada objek SparkSession yang mengambil RDD deptRDD sebagai input.
+</p>
+</div>
+
+## Membuat Datasets 2
+<img src="img/metode_5.2_error.png"/>
+<div>
+<pre>
+<code>
+import org.apache.spark.sql.{Dataset, SparkSession}
+case class Dept(dept_id: Int, dept_name: String)
+val deptRDD = sc.makeRDD(Seq(Dept(1,"Sales"),Dept(2,"HR")))
+val deptDS = spark.createDataset(deptRDD)
+val deptDF = spark.createDataFrame(deptRDD)
+</code>
+</pre>
+<p align="justify">
+Case class Dept yang memiliki atribut dept_id dan dept_name. Selanjutnya, dibuat objek SparkSession dan SparkContext untuk menghubungkan Spark dengan cluster. Kemudian, dibuat sebuah RDD dan Dataset dari objek-objek Dept, serta sebuah DataFrame dari RDD tersebut. Namun, ketika method rdd digunakan untuk mengubah Dataset atau DataFrame menjadi RDD, terjadi error karena objek Dataset dan DataFrame tidak memiliki atribut dept_location yang diakses oleh filter().
+</p>
+</div>
+
