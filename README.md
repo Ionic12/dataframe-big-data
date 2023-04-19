@@ -417,4 +417,36 @@ Membaca file CSV menggunakan PySpark dengan menggunakan fungsi options untuk mem
     <td>10</td>
     <td align="justify">makeRDD, Seq, dan createDataset adalah metode dan jenis data dalam Apache Spark yang digunakan untuk membuat RDD atau DataFrame dari kumpulan data yang ada.</td>
   </tr>
+               <tr>
+    <td>11</td>
+    <td align="justify">filter adalah metode dalam Apache Spark yang digunakan untuk memfilter baris atau data dalam DataFrame berdasarkan kriteria tertentu.</td>
+  </tr>
+                 <tr>
+    <td>12</td>
+    <td align="justify">as, toDF, dan first adalah metode dalam Apache Spark yang digunakan untuk mengubah tipe data dalam DataFrame atau RDD dan mengambil data pertama dari DataFrame atau RDD.</td>
+  </tr>
+                   <tr>
+    <td>13</td>
+    <td align="justify">listDatabases, listTables, listFunctions, isCached, dan select adalah metode dalam Apache Spark yang digunakan untuk mengakses dan memanipulasi metadata dalam Spark.</td>
+  </tr>
+                     <tr>
+    <td>14</td>
+    <td align="justify">read dan text adalah metode dalam Apache Spark yang digunakan untuk membaca file teks dan mengubahnya menjadi RDD.</td>
+  </tr>
+                       <tr>
+    <td>15</td>
+    <td align="justify">load, json, format, dan printSchema adalah metode dalam Apache Spark yang digunakan untuk membaca dan memproses data dalam format JSON dan menampilkan skema dari DataFrame.</td>
+  </tr>
+                         <tr>
+    <td>16</td>
+    <td align="justify">write dan save adalah metode dalam Apache Spark yang digunakan untuk menulis dan menyimpan DataFrame ke berbagai sumber data.</td>
+  </tr>
+                           <tr>
+    <td>17</td>
+    <td align="justify">parquet adalah format file kolomar yang didukung oleh Apache Spark untuk menyimpan data terstruktur secara efisien.</td>
+  </tr>
+                             <tr>
+    <td>18</td>
+    <td align="justify">Options, inferSchema, csv, header, dan codec adalah opsi dan metode dalam Apache Spark yang digunakan untuk membaca dan menulis file CSV, dan menentukan skema data.</td>
+  </tr>
 </table>
