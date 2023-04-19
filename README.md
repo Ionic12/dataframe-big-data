@@ -352,3 +352,21 @@ Membaca file JSON menggunakan PySpark. Kemudian dilakukan pembacaan schema dari 
 
 ## Hasil - Bekerja dengan JSON 
 <img src="img/metode_9_hasil.png"/>
+
+## Bekerja dengan CSV
+<img src="img/metode_10.1.png"/>
+<div>
+<pre>
+<code>
+from pyspark import *
+from pyspark.sql import *
+spark = SparkSession.builder.appName("metode1").getOrCreate()
+sc = spark.sparkContext
+csv_df = spark.read.options(header='true',inferSchema='true').csv("/opt/spark/datatest/cars.csv")
+csv_df.printSchema()
+csv_df.select('year', 'model').write.options(codec="org.apache.hadoop.io.compress.GzipCodec").csv('newcars.csv')
+</code>
+</pre>
+<p align="justify">
+Membaca file CSV menggunakan PySpark dengan menggunakan fungsi options untuk memberikan beberapa opsi pada pembacaan file. Kemudian dilakukan pemilihan kolom pada DataFrame yang telah dibaca, yaitu kolom year dan model. Kemudian dilakukan penulisan DataFrame ke file CSV baru dengan opsi codec yang digunakan untuk memberikan jenis kompresi pada file CSV yang dihasilkan. Pada kode tersebut, digunakan jenis kompresi GzipCodec.
+</p>
