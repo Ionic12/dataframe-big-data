@@ -265,7 +265,7 @@ Proses pengolahan data menggunakan API Spark pada bahasa pemrograman Scala. Pert
 </p>
 </div>
 
-## Mengonversi DataFrame ke Datasets dan sebaliknya
+## Bekerja dengan berkas teks
 <img src="img/metode_8.1.png"/>
 <div>
 <pre>
@@ -283,3 +283,72 @@ df_txt
 Membaca file teks "people.txt" dengan menggunakan PySpark. Terlebih dahulu, SparkSession dibuat menggunakan nama aplikasi "metode1". Kemudian, file teks dibaca menggunakan fungsi read.text() dari SparkSession dengan path file yang diinginkan. Setelah itu, hasil pembacaan file ditampilkan menggunakan show() dan juga disimpan dalam variabel df_txt.
 </p>
 </div>
+
+## Bekerja dengan JSON 1
+<img src="img/metode_9.1.png"/>
+<div>
+<pre>
+<code>
+from pyspark import *
+from pyspark.sql import *
+spark = SparkSession.builder.appName("metode1").getOrCreate()
+sc = spark.sparkContext
+df_json = spark.read.load("/opt/spark/datatest/people.json", format="json")
+df_json = spark.read.json("/opt/spark/datatest/people.json")
+df_json.printSchema()
+df_json.show()
+</code>
+</pre>
+<p align="justify">
+Membaca file JSON menggunakan PySpark. Pertama, SparkSession dibuat menggunakan builder. Kemudian, SparkContext dibuat dari SparkSession tersebut. File JSON kemudian dibaca menggunakan metode .load() atau .json() dari SparkSession dengan menyertakan path file JSON. Setelah data dibaca, schema dari dataframe tersebut di-print menggunakan metode .printSchema() dan selanjutnya menampilkan isi data menggunakan metode .show().
+</p>
+</div>
+
+## Bekerja dengan JSON 2
+<img src="img/metode_9.2.png"/>
+<div>
+<pre>
+<code>
+from pyspark import *
+from pyspark.sql import *
+spark = SparkSession.builder.appName("metode1").getOrCreate()
+sc = spark.sparkContext
+df_json = spark.read.load("/opt/spark/datatest/people.json", format="json")
+df_json = spark.read.json("/opt/spark/datatest/people.json")
+df_json.printSchema()
+df_json.show()
+df_json.write.json("newjson_dir")
+df_json.write.format("json").save("newjson_dir2")
+</code>
+</pre>
+<p align="justify">
+Membaca file JSON menggunakan SparkSession pada Spark dan dilakukan dua metode pembacaan, yaitu spark.read.load() dan spark.read.json(). Kemudian, dilakukan print schema dan tampilan data JSON menggunakan .printSchema() dan .show(). Setelah itu, dilakukan dua cara penyimpanan data JSON ke dalam direktori yang berbeda, yaitu dengan menggunakan write.json() dan write.format("json").save().
+</p>
+</div>
+
+## Bekerja dengan JSON 3
+<img src="img/metode_9.3.png"/>
+<div>
+<pre>
+<code>
+from pyspark import *
+from pyspark.sql import *
+spark = SparkSession.builder.appName("metode1").getOrCreate()
+sc = spark.sparkContext
+df_json = spark.read.load("/opt/spark/datatest/people.json", format="json")
+df_json = spark.read.json("/opt/spark/datatest/people.json")
+df_json.printSchema()
+df_json.show()
+df_json.write.json("newjson_dir")
+df_json.write.format("json").save("newjson_dir2")
+df_json.write.parquet("parquet_dir")
+df_json.write.format("parquet").save("parquet_dir2")
+</code>
+</pre>
+<p align="justify">
+Membaca file JSON menggunakan PySpark. Kemudian dilakukan pembacaan schema dari file JSON dan menampilkan isi data dengan fungsi show(). Setelah itu, data tersebut diekspor ke dalam format JSON pada folder "newjson_dir" dan "newjson_dir2". Selain itu, data juga diekspor dalam format Parquet pada folder "parquet_dir" dan "parquet_dir2".
+</p>
+</div>
+
+## Hasil - Bekerja dengan JSON 
+<img src="img/metode_9_hasil.png"/>
