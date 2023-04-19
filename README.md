@@ -102,3 +102,39 @@ SparkSession dengan nama aplikasi "metode4". Selanjutnya, objek SparkContext dib
 </p>
 </div>
 
+## Membuat DataFrame dari Database Eksternal 1
+<img src="img/metode_3.1.png"/>
+<div>
+<pre>
+<code>
+from pyspark import *
+from pyspark.sql import *
+spark = SparkSession.builder.appName("metode1").getOrCreate()
+sc = spark.sparkContext
+df1 = spark.read.format('jdbc').options(url='jdbc:mysql://ebt-polinema.id:3306/polinema_pln?user=ebt&password=EBT@2022@pltb', dbtable='t_wind_turbine').load()
+df1.limit(5).show()
+</code>
+</pre>
+<p align="justify">
+SparkSession dengan nama aplikasi "metode1" dibuat menggunakan metode builder(). Sesi Spark dengan nama aplikasi tersebut akan digunakan jika sudah ada, dan jika tidak maka sesi baru akan dibuat. Kemudian, objek SparkContext dibuat untuk menghubungkan Spark dengan cluster. Selanjutnya, DataFrame df1 dibuat dengan menggunakan metode read pada objek SparkSession dan format "jdbc" untuk membaca data dari database MySQL. Parameter lainnya seperti url dan dbtable diatur menggunakan options(). Data tersebut kemudian di-load dengan menggunakan metode load() dan disimpan dalam objek DataFrame df1. Terakhir, metode limit() digunakan untuk membatasi jumlah baris data yang ditampilkan pada objek DataFrame df1, kemudian hasilnya ditampilkan menggunakan metode show().
+</p>
+</div>
+
+## Membuat DataFrame dari Database Eksternal 2
+<img src="img/metode_3.2.png"/>
+<div>
+<pre>
+<code>
+from pyspark import *
+from pyspark.sql import *
+spark = SparkSession.builder.appName("metode2").getOrCreate()
+sc = spark.sparkContext
+df2 = spark.read.format('jdbc').options(url='jdbc:mysql://ebt-polinema.id:3306/polinema_pln', dbtable='t_wind_turbine', user='ebt', password='EBT@2022@pltb').load()
+df2.limit(5).show()
+</code>
+</pre>
+<p align="justify">
+SparkSession dengan nama aplikasi "metode2" kemudian dibuat menggunakan metode builder(). Sesi Spark dengan nama aplikasi tersebut akan digunakan jika sudah ada, dan jika tidak maka sesi baru akan dibuat. Kemudian, objek SparkContext dibuat untuk menghubungkan Spark dengan cluster. File t_wind_turbine di-load menggunakan SparkContext dan diubah menjadi DataFrame menggunakan metode read() dengan format JDBC. Opsi untuk koneksi seperti URL, nama tabel, user, dan password disediakan dalam format options(). DataFrame kemudian ditampilkan menggunakan metode show() pada objek DataFrame df2.
+</p>
+</div>
+
