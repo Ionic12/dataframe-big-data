@@ -372,3 +372,25 @@ Membaca file CSV menggunakan PySpark dengan menggunakan fungsi options untuk mem
 </p>
 
 ## Pengertian Kode
+<table>
+  <tr>
+    <th>Kode</th>
+    <th>Penjelasan</th>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td align="justify">mylist dan myschema adalah variabel yang dapat digunakan dalam konteks pembuatan DataFrame di Apache Spark. mylist kemungkinan adalah daftar atau array data yang akan diubah menjadi DataFrame, sedangkan myschema mewakili skema atau struktur data di mylist.</td>
+  </tr>
+    <tr>
+    <td>2</td>
+    <td align="justify">spark.createDataFrame adalah metode dalam Apache Spark yang membuat DataFrame dari RDD (Resilient Distributed Dataset) yang ada atau dari sumber data lainnya.</td>
+  </tr>
+      <tr>
+    <td>3</td>
+    <td align="justify">parallelize adalah metode dalam Apache Spark yang membagi data menjadi beberapa bagian dan mendistribusikannya di seluruh cluster, sedangkan toDF adalah metode yang mengubah RDD menjadi DataFrame.</td>
+  </tr>
+        <tr>
+    <td>4</td>
+    <td align="justify">hadoop, fs, dan put adalah perintah dalam Apache Hadoop yang digunakan untuk mengakses dan menyimpan data di sistem file Hadoop.</td>
+  </tr>
+</table>
