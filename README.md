@@ -393,7 +393,6 @@ Membaca file CSV menggunakan PySpark dengan menggunakan fungsi options untuk mem
     <td>4</td>
     <td align="justify">hadoop, fs, dan put adalah perintah dalam Apache Hadoop yang digunakan untuk mengakses dan menyimpan data di sistem file Hadoop.</td>
   </tr>
-    </tr>
         <tr>
     <td>5</td>
     <td align="justify">pyspark.sql, SQLContext, createOrReplaceTempView, dan show adalah modul dan metode dalam Apache Spark yang digunakan untuk mengakses dan memanipulasi data dalam DataFrame.</td>
