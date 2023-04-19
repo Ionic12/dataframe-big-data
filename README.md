@@ -370,3 +370,5 @@ csv_df.select('year', 'model').write.options(codec="org.apache.hadoop.io.compres
 <p align="justify">
 Membaca file CSV menggunakan PySpark dengan menggunakan fungsi options untuk memberikan beberapa opsi pada pembacaan file. Kemudian dilakukan pemilihan kolom pada DataFrame yang telah dibaca, yaitu kolom year dan model. Kemudian dilakukan penulisan DataFrame ke file CSV baru dengan opsi codec yang digunakan untuk memberikan jenis kompresi pada file CSV yang dihasilkan. Pada kode tersebut, digunakan jenis kompresi GzipCodec.
 </p>
+
+## Pengertian Kode
