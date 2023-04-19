@@ -217,3 +217,50 @@ deptDS.filter(x => x.dept_location > 1).show()
 Error terjadi karena dept_location tidak didefinisikan pada case class Dept. solusinya bisa dengan mengganti dept_location dengan dept_id atau menambahkan field dept_location pada case class-nya.
 </p>
 </div>
+
+## Mengonversi DataFrame ke Datasets dan sebaliknya
+<img src="img/metode_6.1.png"/>
+<div>
+<pre>
+<code>
+import org.apache.spark.sql.{Dataset, SparkSession}
+case class Dept(dept_id: Int, dept_name: String, dept_location: Int)
+val deptRDD = sc.makeRDD(Seq(Dept(1,"Sales", 1), Dept(2,"HR", 2)))
+val deptDS = spark.createDataset(deptRDD)
+val deptDF = spark.createDataFrame(deptRDD)
+deptDS.rdd
+deptDF.rdd
+deptDS.filter(x => x.dept_location > 1).show()
+val newDeptDS = deptDF.as[Dept]
+newDeptDS.show()
+newDeptDS.first()
+newDeptDS.toDF.first()
+</code>
+</pre>
+<p align="justify">
+Scala pada Spark untuk mengolah data menggunakan Dataset dan DataFrame. Pertama-tama, didefinisikan sebuah case class Dept untuk merepresentasikan data departemen. Kemudian, dibuat RDD dari data departemen menggunakan metode makeRDD() pada SparkContext, dan Dataset dan DataFrame dari RDD tersebut menggunakan createDataset() dan createDataFrame() pada SparkSession. Berikutnya, dilakukan transformasi data pada Dataset dengan melakukan filter dan menampilkan hasilnya menggunakan metode show(). Kemudian, dilakukan konversi dari DataFrame ke Dataset menggunakan as[] dan menampilkan hasilnya. Terakhir, dilakukan konversi dari Dataset kembali ke DataFrame menggunakan toDF() dan menampilkan hasilnya.
+</p>
+</div>
+
+## Mengakses Metadata menggunakan Catalog
+<img src="img/metode_7.1.png"/>
+<div>
+<pre>
+<code>
+# Membuat tabel sample_07
+val myData = Seq((50, "DataFrame"), (60, "pandas"))
+val myDF = myData.toDF("col1", "col2")
+myDF.createOrReplaceTempView("sample_07")
+</code>
+<code>
+# Membuat tabel sample_07
+spark.catalog.listDatabases().select("name").show()
+spark.catalog.listTables.show()
+spark.catalog.isCached("sample_07")
+spark.catalog.listFunctions().show()
+</code>
+</pre>
+<p align="justify">
+Proses pengolahan data menggunakan API Spark pada bahasa pemrograman Scala. Pertama, dilakukan pembuatan sebuah tabel sederhana dengan nama "sample_07" dengan menggunakan data yang diambil dari Seq. Selanjutnya, dilakukan beberapa operasi terkait metadata dari katalog Spark, seperti menampilkan list database yang ada, menampilkan list tabel yang ada, mengecek apakah tabel "sample_07" sudah dicache atau belum, dan menampilkan list fungsi Spark yang tersedia. Semua operasi tersebut dapat dilakukan dengan menggunakan fungsi-fungsi pada katalog Spark.
+</p>
+</div>
