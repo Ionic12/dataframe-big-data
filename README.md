@@ -393,4 +393,29 @@ Membaca file CSV menggunakan PySpark dengan menggunakan fungsi options untuk mem
     <td>4</td>
     <td align="justify">hadoop, fs, dan put adalah perintah dalam Apache Hadoop yang digunakan untuk mengakses dan menyimpan data di sistem file Hadoop.</td>
   </tr>
+    </tr>
+        <tr>
+    <td>5</td>
+    <td align="justify">pyspark.sql, SQLContext, createOrReplaceTempView, dan show adalah modul dan metode dalam Apache Spark yang digunakan untuk mengakses dan memanipulasi data dalam DataFrame.</td>
+  </tr>
+          <tr>
+    <td>6</td>
+    <td align="justify">textFile, map, lambda, strip, StructField, dan StringType adalah metode dan jenis data dalam Apache Spark yang digunakan untuk membaca dan memproses file teks, dan mengubahnya menjadi DataFrame.</td>
+  </tr>
+            <tr>
+    <td>7</td>
+    <td align="justify">spark.read.format, jdbc, options, dan load adalah metode dalam Apache Spark yang digunakan untuk membaca data dari berbagai sumber data, termasuk database JDBC dan file yang didukung oleh Spark.</td>
+  </tr>
+         <tr>
+    <td>8</td>
+    <td align="justify">show adalah metode dalam Apache Spark yang digunakan untuk menampilkan data dari DataFrame.</td>
+  </tr>
+           <tr>
+    <td>9</td>
+    <td align="justify">collect, rdd, dan take adalah metode dan jenis data dalam Apache Spark yang digunakan untuk mengambil dan mengumpulkan data dari RDD atau DataFrame.</td>
+  </tr>
+             <tr>
+    <td>10</td>
+    <td align="justify">makeRDD, Seq, dan createDataset adalah metode dan jenis data dalam Apache Spark yang digunakan untuk membuat RDD atau DataFrame dari kumpulan data yang ada.</td>
+  </tr>
 </table>
