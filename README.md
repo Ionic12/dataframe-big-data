@@ -178,7 +178,7 @@ implementasi Apache Spark dengan menggunakan bahasa Scala. Pertama-tama, impor m
 </p>
 </div>
 
-## Membuat Datasets 2
+## Membuat Datasets 2 Error
 <img src="img/metode_5.2_error.png"/>
 <div>
 <pre>
@@ -188,6 +188,9 @@ case class Dept(dept_id: Int, dept_name: String)
 val deptRDD = sc.makeRDD(Seq(Dept(1,"Sales"),Dept(2,"HR")))
 val deptDS = spark.createDataset(deptRDD)
 val deptDF = spark.createDataFrame(deptRDD)
+deptDS.rdd
+deptDF.rdd
+deptDS.filter(x => x.dept_location > 1).show()
 </code>
 </pre>
 <p align="justify">
@@ -195,3 +198,22 @@ Case class Dept yang memiliki atribut dept_id dan dept_name. Selanjutnya, dibuat
 </p>
 </div>
 
+## Membuat Datasets 2 Fix
+<img src="img/metode_5.2_fix.png"/>
+<div>
+<pre>
+<code>
+import org.apache.spark.sql.{Dataset, SparkSession}
+case class Dept(dept_id: Int, dept_name: String, dept_location: Int)
+val deptRDD = sc.makeRDD(Seq(Dept(1,"Sales", 1), Dept(2,"HR", 2)))
+val deptDS = spark.createDataset(deptRDD)
+val deptDF = spark.createDataFrame(deptRDD)
+deptDS.rdd
+deptDF.rdd
+deptDS.filter(x => x.dept_location > 1).show()
+</code>
+</pre>
+<p align="justify">
+Error terjadi karena dept_location tidak didefinisikan pada case class Dept. solusinya bisa dengan mengganti dept_location dengan dept_id atau menambahkan field dept_location pada case class-nya.
+</p>
+</div>
