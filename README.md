@@ -2,6 +2,7 @@
 <div align="justify">
 Tugas ini merupakan bagian dari mata kuliah Big Data dan berfokus pada topik DataFrame dan Dataset pada Apache Spark.
 </div>
+
 ## Spark Web UI
 <img src="img/spark_web_ui.png"/>
 <div align="justify">
