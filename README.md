@@ -243,6 +243,7 @@ Scala pada Spark untuk mengolah data menggunakan Dataset dan DataFrame. Pertama-
 </div>
 
 ## Mengakses Metadata menggunakan Catalog
+<img src="img/metode_7.1_tabel.png"/>
 <img src="img/metode_7.1.png"/>
 <div>
 <pre>
@@ -253,7 +254,6 @@ val myDF = myData.toDF("col1", "col2")
 myDF.createOrReplaceTempView("sample_07")
 </code>
 <code>
-# Membuat tabel sample_07
 spark.catalog.listDatabases().select("name").show()
 spark.catalog.listTables.show()
 spark.catalog.isCached("sample_07")
@@ -262,5 +262,24 @@ spark.catalog.listFunctions().show()
 </pre>
 <p align="justify">
 Proses pengolahan data menggunakan API Spark pada bahasa pemrograman Scala. Pertama, dilakukan pembuatan sebuah tabel sederhana dengan nama "sample_07" dengan menggunakan data yang diambil dari Seq. Selanjutnya, dilakukan beberapa operasi terkait metadata dari katalog Spark, seperti menampilkan list database yang ada, menampilkan list tabel yang ada, mengecek apakah tabel "sample_07" sudah dicache atau belum, dan menampilkan list fungsi Spark yang tersedia. Semua operasi tersebut dapat dilakukan dengan menggunakan fungsi-fungsi pada katalog Spark.
+</p>
+</div>
+
+## Mengonversi DataFrame ke Datasets dan sebaliknya
+<img src="img/metode_8.1.png"/>
+<div>
+<pre>
+<code>
+from pyspark import *
+from pyspark.sql import *
+spark = SparkSession.builder.appName("metode1").getOrCreate()
+sc = spark.sparkContext
+df_txt = spark.read.text("/opt/spark/datatest/people.txt")
+df_txt.show()
+df_txt
+</code>
+</pre>
+<p align="justify">
+Membaca file teks "people.txt" dengan menggunakan PySpark. Terlebih dahulu, SparkSession dibuat menggunakan nama aplikasi "metode1". Kemudian, file teks dibaca menggunakan fungsi read.text() dari SparkSession dengan path file yang diinginkan. Setelah itu, hasil pembacaan file ditampilkan menggunakan show() dan juga disimpan dalam variabel df_txt.
 </p>
 </div>
